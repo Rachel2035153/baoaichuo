@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>保埃绰官方网站</title>
+<style>
+  body {
+    background-color: #000000;
+    background-image: url('bac.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e2e8f0;
+    font-family: "Microsoft YaHei", sans-serif;
+    text-align: center;
+    padding-top: 80px;
+    margin: 0;
+  }
+
+  .card {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 20px;
+    display: inline-block;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 400px;
+    width: 80%;
+  }
+
+  h1 {
+    color: #38bdf8;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 24px;
+  }
+
+  input, select {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #38bdf8;
+    border-radius: 8px;
+    background: #1e293b;
+    color: white;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  select {
+    cursor: pointer;
+    text-align-last: center;
+  }
+
+  button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: #38bdf8;
+    color: #0f172a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s;
+  }
+
+  button:hover {
+    background: #0ea5e9;
+    transform: scale(1.02);
+  }
+
+  #result {
+    margin-top: 24px;
+    font-size: 18px;
+    color: #facc15;
+    min-height: 30px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>你好，这是保埃绰的官方网站</h1>
+    
+    <input id="nameInput" placeholder="在这里输入你的名字">
+    
+    <!-- 下拉选择框 -->
+    <select id="rankSelect">
+      <option value="">-- 请选择你的王者荣耀段位 --</option>
+      <option value="青铜">青铜</option>
+      <option value="白银">白银</option>
+      <option value="黄金">黄金</option>
+      <option value="铂金">铂金</option>
+      <option value="钻石">钻石</option>
+      <option value="星耀">星耀</option>
+      <option value="最强王者">最强王者</option>
+      <option value="荣耀王者">荣耀王者</option>
+      <!-- 新增的选项 -->
+      <option value="不是农批">不是农批</option>
+    </select>
+
+    <button onclick="checkRank()">快点啦！</button>
+    <button onclick="showHospital()" style="margin-top: 15px; background: #facc15;">保埃绰附属铧山医院</button>
+        <button onclick="openRecruit()" style="margin-top: 15px; background: #38bdf8; color: #0f172a;">📣 保埃绰电竞俱乐部招新中</button>
+    <p id="result"></p>
+    <p id="hospitalResult" style="margin-top: 20px; font-size: 16px; color: #38bdf8; line-height: 2;"></p>
+  </div>
+
+<script>
+function checkRank() {
+  var name = document.getElementById("nameInput").value;
+  var rank = document.getElementById("rankSelect").value;
+
+  // 1. 先检查有没有输入名字
+  if (name === "") {
+    document.getElementById("result").innerText = "喂怎么不输入名字？！";
+    return;
+  }
+
+  // 2. 检查有没有选择段位
+  if (rank === "") {
+    document.getElementById("result").innerText = "不玩农吗怎么不选段位？。";
+    return;
+  }
+
+  // 3. 准备好了欢迎语
+  var welcomeText = "哎侬好侬好！。" + name + " 欢迎加入保埃绰！。";
+  
+  // 4. 准备好段位回应
+  var rankText = "";
+  
+  if (rank === "不是农批") {
+    // 新增逻辑：如果选了不是农批
+    rankText = "侬撒意思啊？！，，不玩一个四字游戏就不要加入保埃绰了！。";
+  } else if (rank === "最强王者" || rank === "荣耀王者") {
+    rankText = "喂" + name + " 快点带保埃绰上分啊？！。";
+  } else if (rank === "青铜" || rank === "白银" || rank === "黄金" || rank === "铂金" || rank === "钻石") {
+    rankText = "哎哟 " + name + " 真的是太逊了！。";
+  } else {
+    // 处理星耀的情况
+    rankText = "水平和保埃绰不相上下？。";
+  }
+
+  // 5. 把欢迎语和段位回应合在一起显示，中间加个换行 <br>
+  document.getElementById("result").innerHTML = welcomeText + "<br><br>" + rankText;
+}
+function showHospital() {
+  var info = "🏥 铧山医院人员分布：<br><br>" +
+    "检验科：保埃绰、铧、单身的球妃<br>" +
+    "针灸科：小天<br>" +
+    "安保科：小天<br>" +
+    "外卖员：小弟、定价<br>" +
+    "垃圾房：猪粪。";
+    
+  document.getElementById("hospitalResult").innerHTML = info;
+}
+function openRecruit() {
+  document.getElementById("recruitModal").style.display = "flex";
+}
+
+function closeRecruit() {
+  document.getElementById("recruitModal").style.display = "none";
+}
+
+function submitApplication() {
+  alert("📨 你的简历已成功投递！。保埃绰和木絮正在审核中.......敢乱投试试，，");
+  closeRecruit();
+}
+</script>
+  <!-- 招新弹窗 -->
+  <div id="recruitModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="background: #1e293b; padding: 30px; border-radius: 15px; max-width: 420px; width: 85%; text-align: left; border: 1px solid #38bdf8; box-shadow: 0 0 40px rgba(56, 189, 248, 0.3); max-height: 80vh; overflow-y: auto;">
+      
+      <h2 style="color: #38bdf8; margin-top: 0; text-align: center;">📣 保埃绰电竞俱乐部招新中</h2>
+      <hr style="border-color: #38bdf8; opacity: 0.3; margin: 15px 0;">
+      
+      <div style="color: #e2e8f0; font-size: 15px; line-height: 1.8;">
+        <p><strong style="color: #facc15;">🎮 王者荣耀部门</strong><br>
+        招收：打野、对抗路<br>
+        要求：万战、英雄帅、保埃绰让上号就上号、喜欢听主宰音</p>
+
+        <p><strong style="color: #facc15;">🌍 原神部门</strong><br>
+        招收：代肝<br>
+        要求：所有角色都要大毕业+满命+五精专武，地图探索度100%，剧情任务全部做完</p>
+
+        <p><strong style="color: #facc15;">🚂 星穹铁道部门</strong><br>
+        招收：代肝<br>
+        要求：和原神要求一样！。</p>
+
+        <p><strong style="color: #facc15;">🏗️ 终末地部门</strong><br>
+        招收：终批，电线之间只能平行或垂直。</p>
+
+        <p><strong style="color: #facc15;">🐴 明日方舟部门</strong><br>
+        招收：以主管木絮要求为准</p>
+      </div>
+
+      <hr style="border-color: #38bdf8; opacity: 0.3; margin: 15px 0;">
+
+      <div style="text-align: center; margin-top: 20px;">
+        <button onclick="submitApplication()" style="background: #38bdf8; color: #0f172a; padding: 10px 30px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; width: auto;">申请岗位</button>
+        <button onclick="closeRecruit()" style="background: #64748b; color: white; padding: 10px 20px; margin-left: 10px; border: none; border-radius: 8px; cursor: pointer; width: auto;">关闭</button>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
